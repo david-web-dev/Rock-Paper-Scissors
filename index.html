@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+    <script>
+        
+        let computerScore = 0;
+        let playerScore = 0;
+        
+        let optionsArray = ['Rock', 'Paper', 'Scissors'];
+
+        function capitalizeFirstLetter(word) {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        }
+        
+        function game() {
+            let rounds;
+            for (rounds = 5; rounds > 0; rounds--) {
+                playerSelection = capitalizeFirstLetter(prompt("Choose between rock, paper or scissors"));
+                while (playerSelection != 'Rock' && playerSelection != 'Paper' && playerSelection != 'Scissors') {
+                  playerSelection = capitalizeFirstLetter(prompt("Choose between rock, paper or scissors"));
+                } // while not a correct choice keep asking for it
+                console.log(playerSelection);
+                computerSelection = optionsArray[Math.floor(Math.random() * 3)];
+                
+                // Check the result of this round
+                if (playerSelection == 'Rock') {
+                    switch (computerSelection) {
+                        case 'Rock':
+                            console.log("Player chose " + playerSelection + ". Computer chose " + computerSelection + ". It's a tie!");
+                            break;
+                    
+                        case 'Paper':
+                            console.log("Player chose " + playerSelection + ". Computer chose " + computerSelection + ". Computer wins!");
+                            computerScore++;
+                            break;
+                        
+                        case 'Scissors':
+                            console.log("Player chose " + playerSelection + ". Computer chose " + computerSelection + ". Player wins!");
+                            playerScore++;
+                            break;
+                    } // switch computerSelection
+                } // if playerSelection is Rock
+            
+                else if (playerSelection == 'Paper') {
+                    switch (computerSelection) {
+                        case 'Rock':
+                            console.log("Player chose " + playerSelection + ". Computer chose " + computerSelection + ". Player wins!");
+                            playerScore++;
+                            break;
+                    
+                        case 'Paper':
+                            console.log("Player chose " + playerSelection + ". Computer chose " + computerSelection + ". It's a tie!");
+                            break;
+                    
+                        case 'Scissors':
+                            console.log("Player chose " + playerSelection + ". Computer chose " + computerSelection + ". Computer wins!");
+                            computerScore++;
+                            break;
+                    } // switch computerSelection
+                } // if playerSelection is Paper
+            
+                else if (playerSelection == 'Scissors') {
+                    switch (computerSelection) {
+                        case 'Rock':
+                            console.log("Player chose " + playerSelection + ". Computer chose " + computerSelection + ". Computer wins!");
+                            computerScore++;
+                            break;
+                    
+                        case 'Paper':
+                            console.log("Player chose " + playerSelection + ". Computer chose " + computerSelection + ". Player wins!");
+                            playerScore++;
+                            break;
+                    
+                        case 'Scissors':
+                            console.log("Player chose " + playerSelection + ". Computer chose " + computerSelection + ". It's a tie!");
+                            break;
+                    } // switch computerSelection
+                } // if playerSelection is Scissors
+                
+                // Show results
+                
+            } // End of Round
+            
+            switch (true) {
+                case playerScore > computerScore:
+                    console.log("Congratulations! You won the match");
+                    break;
+                    
+                case playerScore < computerScore:
+                    console.log("Sorry, you lost the match!");
+                    break;
+                
+                case playerScore == computerScore:
+                    console.log("It's a tie! You both guys performed really well!");
+                    break;
+            }
+               
+            console.log("Player: " + playerScore + " point(s).\nComputer: " + computerScore + " point(s).");
+        } // Game Loop
+        
+        game();
+        //window.console.log("Hello");
+        
+    </script>
+</body>
+</html>
